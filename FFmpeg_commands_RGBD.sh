@@ -9,3 +9,6 @@ ffmpeg -i output_master.mkv -c:v ffv1 -pix_fmt gray16be -allow_raw_vfw 1 -map 0:
 
 # to get the configuration file 
 ffmpeg -dump_attachment:3 calibration.json -i output_master.mkv
+
+# to show the metadata from all the streams and store them in metadata.txt
+ffprobe -v quiet -show_format -show_streams -print_format json output_master.mkv > metadata_out.txt
