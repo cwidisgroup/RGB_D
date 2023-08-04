@@ -12,3 +12,10 @@
 * For RGB, No tags is needed and also no global tags
 * For D, Local tags is needed, but no global is needed
 * For IR, the stream was extrated, but it can not be opened in Kinnect Aizure Viewer
+
+## Creation of Point Cloud using RGB and D streams
+* MKVToolNIX is used to combine the RGB and D streams along with their tags and Global Tags.
+* We will use CWIPC to construct the point cloud
+* RGB_D along with their tags and Global Tags is stored in a single file RGB_D.mkv and can be accessed at: \\server\PampusData\Ashu\CWIPC_RGBD
+* CameraConfigFile is also stored at \\server\PampusData\Ashu\CWIPC_RGBD
+* Command to create the point cloud is: 
