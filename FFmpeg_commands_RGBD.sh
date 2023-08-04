@@ -15,3 +15,6 @@ ffprobe -v quiet -show_format -show_streams -print_format json output_master.mkv
 
 # to attach json meta data and video together
 ffmpeg -i temp_0.mkv -i temp_1.mkv -i temp_2.mkv -c copy -map 0:0 -map 1:0 -map 2:0 -allow_raw_vfw 1 -attach calibration.json -metadata:s:3 mimetype=application/octet-stream out.mkv
+
+### Extracting images for RGB Video.
+ffmpeg -i RGB.mkv -map 0:0 -vsync 0 -c:v copy RGB-%04d.png

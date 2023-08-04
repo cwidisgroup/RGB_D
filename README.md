@@ -21,4 +21,12 @@
 * Command to create the point cloud is: **cwipc_grab --k4aoffline --binary --fpattern timestamp:08d --inpoint 5727933 --outpoint 36561266 --nodrop --outliers 30 1.1 1 ply**
 
 
+## Creation of Point Cloud using RGB and D streams with compression
+* Extracting images for RGB Video.
+**ffmpeg -i RGB.mkv -map 0:0 -vsync 0 -c:v copy RGB-%04d.png**
+* The below three commands could be used to reconstruct the RGB file, but these commands are not working. 
+
+ffmpeg -f image2 -framerate 30 -i RGB-%04d.png -s 2048x1536 -pix_fmt yuv422p rg.mkv
+ffmpeg -framerate 30 -i RGB-%04d.png -c:v mjpeg -s 2048x1536 -pix_fmt bgr24 RGB_2.mkv
+ffmpeg -framerate 30 -i RGB-%04d.png -c:v copy --enable-decoder=mjpeg,png RGB_1.mkv
 
