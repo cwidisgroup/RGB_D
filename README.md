@@ -24,8 +24,11 @@
 ## Creation of Point Cloud using RGB and D streams with compression
 * Extracting images for RGB Video.
 **ffmpeg -i RGB.mkv -map 0:0 -vsync 0 -c:v copy RGB-%04d.png**
-* The below three commands could be used to reconstruct the RGB file, but these commands are not working. 
+**ffmpeg -i .\RGB_WithMeta.mkv RGB-%04d.png**
 
+* The below four commands could be used to reconstruct the RGB file. 
+
+* ffmpeg -i RGB-%04d.png -pix_fmt yuv420p -r 30 -s 2048:1536 RG1.mkv
 * ffmpeg -f image2 -framerate 30 -i RGB-%04d.png -s 2048x1536 -pix_fmt yuv422p rg.mkv
 * ffmpeg -framerate 30 -i RGB-%04d.png -c:v mjpeg -s 2048x1536 -pix_fmt bgr24 RGB_2.mkv
 * ffmpeg -framerate 30 -i RGB-%04d.png -c:v copy --enable-decoder=mjpeg,png RGB_1.mkv
